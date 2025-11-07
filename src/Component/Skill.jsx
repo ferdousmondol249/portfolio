@@ -100,9 +100,13 @@ export default function SkillsSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-white flex items-center gap-3">
             <SiReact size={36} /> Skills & Technologies
           </h2>
-          <p className="mt-3 text-lg text-white/90">
+          <motion.p
+            className="mt-3 text-lg"
+            animate={{ color: ["rgba(255,255,255,0.9)", "#c7d2fe", "rgba(255,255,255,0.9)"] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          >
             A comprehensive toolkit of modern technologies and frameworks I use to build scalable, efficient, and innovative solutions.
-          </p>
+          </motion.p>
         </div>
 
         {/* Right Image */}

@@ -40,10 +40,14 @@ export default function GetTouch() {
           <h3 className="text-2xl md:text-3xl font-semibold mb-4">
             Get In Touch
           </h3>
-          <p className="text-slate-700 dark:text-white/80 max-w-2xl mx-auto">
+          <motion.p
+            className="max-w-2xl mx-auto"
+            animate={{ color: ["#334155", "#2563eb", "#334155"] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          >
             Have a project in mind or just want to chat? I'd love to hear from
             you. Let's create something amazing together.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Contact Info + Form */}

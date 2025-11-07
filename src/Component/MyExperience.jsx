@@ -56,12 +56,16 @@ export default function MyExperience() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-emerald-600 dark:text-green-400">
             Professional Summary
           </h2>
-          <p className="max-w-4xl mx-auto text-slate-700 dark:text-white/80 leading-relaxed text-lg">
+          <motion.p
+            className="max-w-4xl mx-auto leading-relaxed text-lg"
+            animate={{ color: ["#334155", "#059669", "#334155"] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          >
             A passionate and dedicated <span className="text-green-300 font-semibold">Computer Science and Engineering</span> student at the University of Dhaka. 
             Strong interest in <span className="text-green-300 font-semibold">Machine Learning, Deep Learning, and Full-Stack Development</span>. 
             Skilled in developing real-world applications and solving data-driven problems.
             Actively seeking opportunities to apply my knowledge through internships or collaborative projects.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Experience Section */}
@@ -69,9 +73,13 @@ export default function MyExperience() {
           <Briefcase size={38} className="text-green-400" />
           My Experience
         </h2>
-        <p className="text-center text-slate-600 dark:text-white/80 mb-12">
+        <motion.p
+          className="text-center mb-12"
+          animate={{ color: ["#475569", "#10b981", "#475569"] }}
+          transition={{ duration: 6, repeat: Infinity, delay: 0.3 }}
+        >
           A journey of learning, teaching, and building impactful solutions.
-        </p>
+        </motion.p>
 
         <div className="relative border-l-4 border-green-500 pl-8 space-y-10">
           {experiences.map((exp, index) => (
@@ -119,11 +127,15 @@ export default function MyExperience() {
           <h3 className="text-3xl font-bold mb-4 flex justify-center items-center gap-3">
             <Brain size={32} className="text-green-400" /> Current Research
           </h3>
-          <p className="text-slate-700 dark:text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <motion.p
+            className="max-w-3xl mx-auto leading-relaxed text-center md:text-left"
+            animate={{ color: ["#334155", "#2563eb", "#334155"] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          >
             Currently researching on <span className="text-green-300 font-semibold">Device-to-Device Power Optimization</span> 
             to improve energy efficiency and optimize resource allocation in distributed systems.
             Exploring how Machine Learning can be combined with optimization algorithms for adaptive, scalable solutions.
-          </p>
+          </motion.p>
         </div>
 
         {/* Skills */}
@@ -153,11 +165,15 @@ export default function MyExperience() {
           <h3 className="text-3xl font-bold mb-4 flex justify-center items-center gap-3">
             <Cpu size={32} className="text-green-400" /> Research Interests
           </h3>
-          <p className="text-slate-700 dark:text-white/80 max-w-3xl mx-auto leading-relaxed">
+          <motion.p
+            className="max-w-3xl mx-auto leading-relaxed"
+            animate={{ color: ["#334155", "#22c55e", "#334155"] }}
+            transition={{ duration: 6, repeat: Infinity, delay: 0.4 }}
+          >
             • Machine Learning & Deep Learning <br />
             • Cloud Computing Resource Optimization <br />
             • Blockchain-Based Decentralized Systems
-          </p>
+          </motion.p>
         </div>
       </div>
     </section>

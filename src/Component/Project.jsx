@@ -138,9 +138,13 @@ export default function ProjectsSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 text-center flex justify-center items-center gap-3">
             <SiReact size={40} /> Web Development Projects
           </h2>
-          <p className="text-slate-600 dark:text-white/90 mb-12 text-center">
+          <motion.p
+            className="mb-12 text-center"
+            animate={{ color: ["#475569", "#2563eb", "#475569"] }}
+            transition={{ duration: 6, repeat: Infinity }}
+          >
             Full-stack and frontend projects showcasing scalable and modern web applications.
-          </p>
+          </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {webProjects.map((project, index) => (
@@ -195,9 +199,13 @@ export default function ProjectsSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 text-center flex justify-center items-center gap-3">
             <SiPython size={40} /> Machine Learning Projects
           </h2>
-          <p className="text-slate-600 dark:text-white/90 mb-12 text-center">
+          <motion.p
+            className="mb-12 text-center"
+            animate={{ color: ["#475569", "#0ea5e9", "#475569"] }}
+            transition={{ duration: 6, repeat: Infinity, delay: 0.4 }}
+          >
             A collection of my ML & AI projects focusing on predictive modeling, NLP, and data-driven insights.
-          </p>
+          </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {mlProjects.map((project, index) => (

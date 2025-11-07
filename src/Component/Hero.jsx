@@ -1,9 +1,18 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import heroImg from "../assets/profile.jpg";
 
 export default function Hero() {
+  const names = ["Ferdous", "Mondol"];
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setIdx((i) => (i + 1) % names.length);
+    }, 1600); // swap every ~1.6s
+    return () => clearInterval(t);
+  }, []);
   return (
    <section className="relative flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-16 lg:px-32 py-10 md:py-16 min-h-[70vh] md:h-[80vh] bg-gradient-to-b from-blue-50 via-blue-100 to-white dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden shadow-lg mt-2">
 
@@ -17,7 +26,23 @@ export default function Hero() {
           transition={{ duration: 1 }}
           className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white transition duration-500 hover:text-blue-600"
         >
-          Hi, I'm <span className="text-blue-600">Ferdous</span> 👋
+          Hi, I'm
+          {' '}
+          <span className="relative inline-block h-[1em] overflow-hidden align-baseline text-blue-600">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={idx}
+                initial={{ y: "-100%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                exit={{ y: "100%", opacity: 0 }}
+                transition={{ duration: 0.45 }}
+                className="inline-block"
+              >
+                {names[idx]}
+              </motion.span>
+            </AnimatePresence>
+          </span>{' '}
+          👋
         </motion.h1>
 
         {/* Role / Summary with Typewriter */}
@@ -76,14 +101,32 @@ export default function Hero() {
         </motion.div>
 
         {/* Button */}
-        <motion.button
+        <motion.a
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2, duration: 1 }}
-          className="mt-6 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          href="#projects"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById('projects') || document.querySelector('[id="projects"]');
+            const header = document.querySelector('header');
+            const headerOffset = header ? header.offsetHeight : 80;
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+              const targetY = rect.top + scrollTop - headerOffset;
+              window.scrollTo({ top: targetY, behavior: 'smooth' });
+              if (typeof history !== 'undefined' && typeof history.pushState === 'function') {
+                history.pushState(null, '', '#projects');
+              }
+            } else {
+              window.location.hash = 'projects';
+            }
+          }}
+          className="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
         >
           View My Work
-        </motion.button>
+        </motion.a>
       </div>
 
       {/* Image part */}
@@ -107,9 +150,24 @@ export default function Hero() {
                 transition={{ delay: 2, duration: 1 }}
                 className="mt-4 text-center text-sm md:text-base text-slate-700 dark:text-slate-300 space-y-1"
             >
-                <p>Udvash - Math Teacher</p>
-                <p>Intern at SoftLab It</p>
-                <p>CTO of Failure Academy</p>
+                <motion.p
+                  animate={{ color: ["#475569", "#2563eb", "#475569"] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                >
+                  Udvash - Math Teacher
+                </motion.p>
+                <motion.p
+                  animate={{ color: ["#475569", "#0ea5e9", "#475569"] }}
+                  transition={{ duration: 4, repeat: Infinity, delay: 0.4 }}
+                >
+                  Intern at SoftLab It
+                </motion.p>
+                <motion.p
+                  animate={{ color: ["#475569", "#22c55e", "#475569"] }}
+                  transition={{ duration: 4, repeat: Infinity, delay: 0.8 }}
+                >
+                  CTO of Failure Academy
+                </motion.p>
             </motion.div>
       </motion.div>
 

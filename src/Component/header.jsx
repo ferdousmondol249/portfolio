@@ -211,6 +211,59 @@ export default function Header() {
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">
+          <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8 space-y-3">
+            {menu.map((item) => (
+              <a
+                key={item.href}
+                onClick={() => setOpen(false)}
+                href={item.href}
+                className="block text-slate-700 dark:text-slate-300 font-medium hover:text-blue-600 dark:hover:text-blue-400 transition"
+              >
+                {item.label}
+              </a>
+            ))}
+
+            {/* Tech Stack (mobile accordion) */}
+            <details className="rounded-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <summary className="cursor-pointer select-none px-4 py-2 text-slate-800 dark:text-slate-200 font-semibold bg-slate-50 dark:bg-slate-800/60">Tech Stack</summary>
+              <div className="px-4 py-3 space-y-3 bg-white dark:bg-slate-900">
+                {Object.keys(stackData).map((cat) => (
+                  <div key={cat}>
+                    <h4 className="text-sm font-semibold text-slate-900 dark:text-white mb-1">{cat}</h4>
+                    <ul className="list-disc pl-5 text-sm text-slate-700 dark:text-slate-300">
+                      {stackData[cat].map((it) => (
+                        <li key={it}>{it}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </details>
+
+            <div className="pt-3 flex gap-3">
+              <a
+                href={resumePdf}
+                download
+                onClick={() => setOpen(false)}
+                className="flex-1 rounded-lg border border-slate-300 dark:border-slate-700 px-4 py-2 text-center text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+              >
+                Resume
+              </a>
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="flex-1 rounded-lg bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 py-2 text-center text-white dark:text-white font-medium hover:scale-105 transition-transform duration-300"
+              >
+                Hire Me
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   )
 }
